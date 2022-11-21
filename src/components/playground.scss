@@ -1,0 +1,29 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+#cont {
+    width: 90vmin;
+    height: 90vmin;
+    border: 2px solid rgb(235, 86, 0);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows:  repeat(8, 1fr);
+}
+
+.white{
+    background-color: #b58863;
+}
+
+.black{
+    background-color: #f0d9b5;
+}
