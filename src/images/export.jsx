@@ -9,3 +9,19 @@ import bishopWhite from "./images/bishopWhite.png";
 import queenWhite from "./images/queenWhite.png";
 import kingWhite from "./images/kingWhite.png";
 import pownBlack from "./images/pownBlack.png";
+import pownWhite from "./images/pownWhite.png";
+
+export {
+    rockBlack,
+    knightBlack,
+    bishopBlack,
+    queenBlack,
+    kingBlack,
+    pownBlack,
+    rockWhite,
+    knightWhite,
+    bishopWhite,
+    queenWhite,
+    kingWhite,
+    pownWhite,
+};
