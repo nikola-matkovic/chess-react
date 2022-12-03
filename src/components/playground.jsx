@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./playground.scss";
 import figures from "../images/export.jsx";
+import { click } from "@testing-library/user-event/dist/click";
 
 class Figure {
     constructor(color, points, name, image) {
@@ -11,6 +12,7 @@ class Figure {
     }
 }
 const Playground = () => {
+    const [active, setAcive] = useState(Array(8).fill(Array(8).fill(false)));
     let rockBlack = new Figure("black", 5, "rock", figures.rockBlack);
     let rockWhite = new Figure("white", 5, "rock", figures.rockWhite);
     let knightBlack = new Figure("black", 3, "knight", figures.knightBlack);
@@ -24,6 +26,26 @@ const Playground = () => {
     let pownBlack = new Figure("black", 1, "pown", figures.pownBlack);
     let pownWhite = new Figure("White", 1, "pown", figures.pownWhite);
     let UI = [];
+
+    const handleClick = (e, i, j) => {
+        let element = e.target;
+        active.forEach((row, index) => {
+            row.forEach((cell, index) => {
+                if (index === i) {
+                    element.classList.toggle("active");
+                    let newActive = [...active];
+                    newActive[i][j] = !newActive[i][j];
+                    setAcive(newActive);
+                    console.log("true");
+                } else {
+                    let newActive = [...active];
+                    newActive[i][j] = false;
+                    setAcive(newActive);
+                    console.log("false");
+                }
+            });
+        });
+    };
 
     let [positons, setPositions] = useState([
         [
@@ -58,9 +80,10 @@ const Playground = () => {
         for (let j = 1; j <= 8; j++) {
             UI.push(
                 <div
-                    className={`cell ${(i + j) % 2 !== 1 ? `white` : `black`} `}
+                    className={`cell ${(i + j) % 2 !== 1 ? `black` : `white`} `}
                     key={`${i}-${j}`}
                     id={`${i}-${j}`}
+                    onClick={(e) => handleClick(e, i, j)}
                 ></div>
             );
         }

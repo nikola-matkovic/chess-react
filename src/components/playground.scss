@@ -27,9 +27,18 @@ body{
 }
 
 .white{
-    background-color: #b58863;
+    background-color: #f0d9b5;
 }
 
 .black{
-    background-color: #f0d9b5;
+    background-color:  #b58863;
+}
+
+.black.active{
+    background-color: mix( #b58863, rgba(0, 255, 0, .5 ));
+}
+
+
+.white.active{
+    background-color: mix( #b58863, rgba(0, 255, 0, 0.5));
 }
