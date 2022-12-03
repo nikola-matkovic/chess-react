@@ -28,23 +28,20 @@ const Playground = () => {
     let UI = [];
 
     const handleClick = (e, i, j) => {
-        let element = e.target;
-        active.forEach((row, index) => {
-            row.forEach((cell, index) => {
-                if (index === i) {
-                    element.classList.toggle("active");
-                    let newActive = [...active];
-                    newActive[i][j] = !newActive[i][j];
-                    setAcive(newActive);
-                    console.log("true");
+        let newActive = Array(8).fill(Array(8));
+        for (let ii = 0; ii < 8; ii++) {
+            for (let jj = 0; jj < 8; jj++) {
+                if (ii === i - 1 && jj === j - 1) {
+                    newActive[ii][jj] = true;
+                    console.log(newActive[ii][jj]);
+                    console.log(`j = ${j} i = ${i} ii = ${ii} jj=${jj}`);
                 } else {
-                    let newActive = [...active];
-                    newActive[i][j] = false;
-                    setAcive(newActive);
-                    console.log("false");
+                    newActive[ii][jj] = false;
                 }
-            });
-        });
+            }
+        }
+        console.log(newActive[i - 1][j - 1], "here");
+        console.log(...newActive);
     };
 
     let [positons, setPositions] = useState([
@@ -80,7 +77,8 @@ const Playground = () => {
         for (let j = 1; j <= 8; j++) {
             UI.push(
                 <div
-                    className={`cell ${(i + j) % 2 !== 1 ? `black` : `white`} `}
+                    className={`cell ${(i + j) % 2 !== 1 ? `black` : `white`}
+                    ${active[i - 1][j - 1] ? "active" : ""} `}
                     key={`${i}-${j}`}
                     id={`${i}-${j}`}
                     onClick={(e) => handleClick(e, i, j)}
